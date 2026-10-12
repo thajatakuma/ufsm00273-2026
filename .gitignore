@@ -1,0 +1,9 @@
+/build*/
+
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+.vscode/*.user
+.vscode/settings.local.json
