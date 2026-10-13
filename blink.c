@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "pico/bootrom.h"
 #include "pico/stdlib.h"
 
 #define MOTOR_A_IN1 0
@@ -8,6 +9,7 @@
 #define LED_RED 12
 #define LED_GREEN 11
 #define LED_BLUE 10
+#define BOOTLOADER_BUTTON 15
 #define RGB_COMMON_ANODE 1
 
 static void output_init(uint pin, bool initial)
@@ -15,6 +17,13 @@ static void output_init(uint pin, bool initial)
     gpio_init(pin);
     gpio_put(pin, initial);
     gpio_set_dir(pin, GPIO_OUT);
+}
+
+static void bootloader_button_init(void)
+{
+    gpio_init(BOOTLOADER_BUTTON);
+    gpio_set_dir(BOOTLOADER_BUTTON, GPIO_IN);
+    gpio_pull_up(BOOTLOADER_BUTTON);
 }
 
 static void rgb(bool red, bool green, bool blue)
@@ -48,6 +57,10 @@ static void test_motor(uint in1, uint in2, const char *name)
 
 int main(void)
 {
+    bootloader_button_init();
+    if (!gpio_get(BOOTLOADER_BUTTON))
+        reset_usb_boot(0, 0);
+
     output_init(MOTOR_A_IN1, false);
     output_init(MOTOR_A_IN2, false);
     output_init(MOTOR_B_IN1, false);
