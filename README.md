@@ -11,9 +11,9 @@ Desenvolvimento do robô móvel (`r2d2_pro`) como parte da disciplina de Projeto
 | Microcontrolador | Raspberry Pi Pico |
 | Driver de Motor | L298N |
 | Motor | MDCR3-6V |
-| LED | RGB (ânodo comum, um resistor por canal) |
+| LED | RGB  |
 | Carregador de Bateria | TP4056 |
-| Chave | Liga/desliga na saída do TP4056 |
+| Botão | Ativa o modo de gravação |
 
 ### Esquemático
 
@@ -29,10 +29,12 @@ Desenvolvimento do robô móvel (`r2d2_pro`) como parte da disciplina de Projeto
 | 2 | GP1 | Driver `IN2` | Motor A |
 | 4 | GP2 | Driver `IN3` | Motor B |
 | 5 | GP3 | Driver `IN4` | Motor B |
-| 6 | GP4 | Conector `PWM` (pino 1) | Entrada de sinal externo |
 | 14 | GP10 | LED Azul (`Blu`) | LED RGB |
 | 15 | GP11 | LED Verde (`Grn`) | LED RGB |
 | 16 | GP12 | LED Vermelho (`Red`) | LED RGB |
+| 20 | GP15 | Botão | Ativa o modo de gravação |
+
+>obs. Falta adicionar no esquemático o botão em GP15
 
 ## Funcionalidades
 
